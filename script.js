@@ -11,18 +11,43 @@ const content = document.createElement('div');
 content.classList.add('test')
 mainGrid.appendChild(content);
 }
+  
 
-
-// content.innerHTML = ''
-
-// const example = document.querySelector('div.test'); 
-
-    
         const gridItems = document.querySelectorAll("#grid > div")
+
+        const paintButton = document.querySelector(".paint");
+
+        paintButton.addEventListener("click", () => {
+            paint()
+        })
+
+
+    function paint() {
+
+            gridItems.forEach((items => {
+                const gridItem = items;
+                gridItem.addEventListener("click", () => {
+                    gridItem.classList.add("test2")
+                    } );
+                    console.log("paint")
+        }))
+    }
+
+ 
+    const eraseButton = document.querySelector(".erase");
+
+    eraseButton.addEventListener("click", () => {
+        erase()
+    })
+
+
+    function erase() {
 
         gridItems.forEach((items => {
             const gridItem = items;
             gridItem.addEventListener("click", () => {
-                gridItem.classList.add("test2")
+                gridItem.classList.remove("test2")
                 } );
-        }))
+                console.log("erase")
+    }))
+    }
