@@ -3,15 +3,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etch-a-Sketch</title>
+    <title>Pixel Brush</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-        <div id="grid"></div>
-            <div class="box">
-                <button class="paint">paint</button>
-                <button class="erase">erase</button>
+    <h2>Pixel Brush</h2>
+        <section class ='main'>
+            <div class="settings">
+                <input type="color" id="colorpicker" value="#33333">
+                <button class="button">Paint</button>
+                <button class="button">Rainbow</button>
+                <button class="check">Memorize Color</button>
+                <button class="erase">Erase</button>
+                <button class="erase">Pick Color</button>
             </div>
+            <div class="grid"></div>
+            </section>
+
         <script src="script.js" defer></script>
 </body>
 </html>

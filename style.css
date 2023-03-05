@@ -1,44 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Kanit:ital@0;1&family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&display=swap');
+
+
 body {
+    height: 100%;
+    flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Silkscreen', cursive;
 }
 
-#grid {
+button {
+    font-family: 'Silkscreen', cursive;
+    height: 50px;
+    width: 100%;
+    border: rgba(58, 52, 56, 0.4) solid;
+    border-radius: 10px;
+    box-shadow: rgba(78, 73, 76, 0.4) -5px 5px, rgba(104, 93, 100, 0.3) -10px 10px, rgba(160, 142, 153, 0.2) -15px 15px, rgba(194, 191, 193, 0.1) -20px 20px, rgba(66, 59, 64, 0.05) -25px 25px;
+}
+
+h2 {
+    color: rgb(56, 52, 55)
+}
+
+button:hover {
+    box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+  }
+
+button:active {
+    background-color: rgb(161, 43, 122);
+  }
+
+.grid-container {
+    display: grid;
+    gap: 0px 0px;
+    
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+}
+
+.settings {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    height: 100%;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    padding-right: 50px;
 }
-
-div {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #000000;
-    width: 168px;
-    height: 168px;
-}
-
-.test {
-    border-style: solid;
-    border-width: 1px;
-    width: 40px;
-    height: 40px;
-}
-
-.test2 {
-    background-color: #000000;
-}
-
-.test3 {
-    background-color:white;
-}
-
-.box {
-    display: flex;
-    border-style: none;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 70px;
-    height: 70px;
-    margin-left: 20px;
+.grid {
+    display: grid;
+    border: solid rgb(99, 97, 97);
+    width: 500px;
+    height: 500px;
+    background-color: var(black);
+    box-shadow: rgba(78, 73, 76, 0.4) -5px 5px, rgba(104, 93, 100, 0.3) -10px 10px, rgba(160, 142, 153, 0.2) -15px 15px, rgba(194, 191, 193, 0.1) -20px 20px, rgba(66, 59, 64, 0.05) -25px 25px;
+  }
+  
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100px;
+    height: 100px;
+    border: none;
+    cursor: pointer;
+    box-shadow: rgba(78, 73, 76, 0.4) -5px 5px, rgba(104, 93, 100, 0.3) -10px 10px, rgba(160, 142, 153, 0.2) -15px 15px, rgba(194, 191, 193, 0.1) -20px 20px, rgba(66, 59, 64, 0.05) -25px 25px;
 }
