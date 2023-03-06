@@ -28,13 +28,13 @@ button:hover {
   }
 
 button:active {
-    background-color: rgb(161, 43, 122);
+    background-color: rgb(78, 71, 74);
+    color: aliceblue;
   }
 
-.grid-container {
-    display: grid;
-    gap: 0px 0px;
-    
+.activate-button {
+    background-color: rgb(78, 71, 74);
+    color: aliceblue;
 }
 
 .main {
@@ -59,8 +59,8 @@ button:active {
     background-color: var(black);
     box-shadow: rgba(78, 73, 76, 0.4) -5px 5px, rgba(104, 93, 100, 0.3) -10px 10px, rgba(160, 142, 153, 0.2) -15px 15px, rgba(194, 191, 193, 0.1) -20px 20px, rgba(66, 59, 64, 0.05) -25px 25px;
   }
-  
-input {
+
+input#colorpicker {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -68,5 +68,82 @@ input {
     height: 100px;
     border: none;
     cursor: pointer;
+    outline: none;
     box-shadow: rgba(78, 73, 76, 0.4) -5px 5px, rgba(104, 93, 100, 0.3) -10px 10px, rgba(160, 142, 153, 0.2) -15px 15px, rgba(194, 191, 193, 0.1) -20px 20px, rgba(66, 59, 64, 0.05) -25px 25px;
+}
+
+input#sizeSlider {
+
+}
+
+.sizeSettings {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 30px;
+}
+
+.size-value {
+    padding-top: 15px;
+}
+
+/*********** Baseline, reset styles ***********/
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 13 rem;
+}
+
+/* Removes default focus */
+input[type="range"]:focus {
+    outline: none;
+}
+
+/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #e3e3e3;
+    border-radius: 1rem;
+    height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -8px; /* Centers thumb on the track */
+    background-color: #808080;
+    border-radius: 1rem;
+    height: 1.5rem;
+    width: 1rem;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+    outline: 3px solid #808080;
+    outline-offset: 0.125rem;
+}
+
+/*********** Firefox styles ***********/
+/* slider track */
+input[type="range"]::-moz-range-track {
+    background-color: #e3e3e3;
+    border-radius: 1rem;
+    height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+    background-color: #808080;
+    border: none; /*Removes extra border that FF applies*/
+    border-radius: 1rem;
+    height: 1.5rem;
+    width: 1rem;
+}
+
+input[type="range"]:focus::-moz-range-thumb{
+    outline: 3px solid #808080;
+    outline-offset: 0.125rem;
 }

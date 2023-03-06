@@ -1,57 +1,100 @@
-const DEFAULT_COLOR = '#33333';
-const DEFAULT_SIZE = 16;
-const DEFAULT_MODE = 'paint';
+const DEFAULT_COLOR = '#333333'
+const DEFAULT_MODE = 'paint'
+const DEFAULT_SIZE = '16'
 
-let currentColor = DEFAULT_COLOR;
-let currentSize = DEFAULT_SIZE;
-let currentMode = DEFAULT_MODE;
+let currentColor = DEFAULT_COLOR
+let currentMode = DEFAULT_MODE
+let currentSize = DEFAULT_SIZE
 
-const colorPicker = document.getElementById("colorpicker")
-const testBox = document.getElementsByClassName("test-box")
-const checkBox = document.querySelector(".check")
-const grid = document.querySelector(".grid")
+//elements
+const grid = document.querySelector('.grid')
+const paintBtn = document.querySelector('.paint')
+const eraseBtn = document.querySelector('.erase')
+const rainbowBtn = document.querySelector('.rainbow')
+const changeBgc = document.querySelector('.memorize')
+const clearBtn = document.querySelector('.clear')
+const colorPicker = document.getElementById('colorPicker')
+const sizeSlider = document.getElementById('sizeSlider')
 
 
-function updateColor(newColor) {
+//settings functions
+function setCurrentColor(newColor) {
     currentColor = newColor
 }
 
-function checkColor() {
-    console.log(currentColor)
-    
+function setCurrentMode(newMode) {
+    currentMode = newMode
 }
 
-function bgChange(e) {
-    e.target.style.backgroundColor = currentColor;
-    console.log(e);
-  }
+//events
+sizeSlider.onchange = (event) => changeSize(event.target.value)
+colorPicker.oninput = (event) => setCurrentColor(event.target.value)
+paintBtn.onclick = () => setCurrentMode('paint')
+eraseBtn.onclick = () => setCurrentMode('erase')
+rainbowBtn.onclick = () => setCurrentMode('rainbow')
+clearBtn.onclick = () => reloadGrid()
+changeBgc.onclick = () => grid.style.backgroundColor = currentColor
 
-  function setupGrid(size) {
-    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
+//grid functions
+function setCurrentSize(newSize) {
+    currentSize = newSize
+}
+
+function changeSize(value) {
+    setCurrentSize(value)
+    updateSizeValue(value)
+    reloadGrid()
+}
+
+function reloadGrid() {
+    clearGrid()
+    setGrid(currentSize)
+}
+
+function clearGrid() {
+    grid.innerHTML =''
+}
+
+function setGrid(size) {
     grid.style.gridTemplateRows = `repeat(${size}, 1fr)`
-  
-    for (let i = 0; i < size * size; i++) {
-      const gridElement = document.createElement('div')
-      gridElement.classList.add('grid-element')
-      gridElement.addEventListener('mouseover', changeColor)
-      gridElement.addEventListener('mousedown', changeColor)
-      grid.appendChild(gridElement)
-    }
-  }
+    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`
 
-  function changeColor(e) {
-    if (e.type === 'mouseover' && !mouseDown) return
-    e.target.style.backgroundColor = currentColor
-  }
+        for (let i = 0; i < size * size; i++) {
+            const gridChild = document.createElement('div')
+            gridChild.addEventListener('mouseover', changeColor)
+            gridChild.addEventListener('mousedown', changeColor)
+            grid.appendChild(gridChild)
+        }
+}
+
+function updateSizeValue(value) {
+    sizeValue.innerHTML = `${value} x ${value}`
+}
+
+//paint functions
+
+function changeColor(event) {
+    if (event.type === 'mouseover' && !mouseDown) return
+    switch(currentMode) {
+        case 'paint' :
+            event.target.style.backgroundColor = currentColor
+            break;
+        case 'erase' :
+            event.target.style.backgroundColor = grid.style.backgroundColor
+            break;
+        case 'rainbow' :
+            const randomR = Math.floor(Math.random() * 256)
+            const randomG = Math.floor(Math.random() * 256)
+            const randomB = Math.floor(Math.random() * 256)
+            event.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
+            break;
+    }
+}
 
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
 
-checkBox.addEventListener("click", checkColor)
-checkBox.addEventListener("click", bgChange)
-colorPicker.oninput = (event) => updateColor(event.target.value);
-
 window.onload = () => {
-    setupGrid(DEFAULT_SIZE)
-  }
+    setGrid(DEFAULT_SIZE)
+}
